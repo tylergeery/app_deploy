@@ -1,7 +1,7 @@
 resource "aws_subnet" "aws-mini-subnet" {
     cidr_block = cidrsubnet(aws_vpc.aws-mini-vpc.cidr_block, 4, 1)
     vpc_id = aws_vpc.aws-mini-vpc.id
-    availability_zone = "us-west-1b"
+    availability_zone = "${var.region}a"
 }
 
 resource "aws_route_table" "aws-mini-route-table" {

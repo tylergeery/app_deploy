@@ -1,13 +1,13 @@
 locals {
-    ami_name = "ami-0dd655843c87b6930"
+    ami_name = "ami-0d1cd67c26f5fca19"
     key_name = "aws-mini"
 }
 
 resource "aws_instance" "aws-mini-ec2" {
     ami = local.ami_name
-    instance_type = "t2.micro"
+    instance_type = "t3.nano"
     key_name = local.key_name
-    security_groups = [
+    vpc_security_group_ids = [
         aws_security_group.aws-mini-sg.id
     ]
     tags = {

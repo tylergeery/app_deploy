@@ -31,3 +31,4 @@ override.tf.json
 # Project specific
 credentials/
 account.json
+servers/aws_mini/aws-mini

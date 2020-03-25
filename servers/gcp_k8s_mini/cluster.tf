@@ -62,6 +62,11 @@ resource "google_container_node_pool" "gd-node-pool" {
     image_type = var.general_purpose_image_type
     machine_type = var.general_purpose_machine_type
 
+    labels = {
+        use = "general"
+        app = "any"
+    }
+
     metadata = {
       disable-legacy-endpoints = "true"
     }
