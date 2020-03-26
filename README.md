@@ -3,8 +3,9 @@ Infrastructure to deploy multi-tenant apps across cloud providers
 
 ## SSH servers help
 ```bash
-terraform show -json | jq .values | grep public_dns
-ssh -i credentials/aws-mini <public_dns>
+# Example for aws-mini
+terraform show -json | jq .values.root_module.resources[0].values.public_dns
+ssh -i aws-mini ubuntu@<public_dns>
 ```
 
 ### TODO
