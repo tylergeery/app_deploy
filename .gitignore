@@ -32,3 +32,4 @@ override.tf.json
 credentials/
 account.json
 servers/aws_mini/aws-mini
+deploy.txt
