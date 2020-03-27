@@ -10,6 +10,7 @@ ssh -i aws-mini ubuntu@<public_dns>
 
 ### TodoList
 - Add certificate for base/naked domain (geerydev.com)
+- Ansible playbook for recreating ec2 instance
 - Sync application code with server (ansible deploy)
 - Add deploy playbooks or CLI to other repos
 - Handle graceful deploys (rolling) `nginx reload -s`
