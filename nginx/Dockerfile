@@ -4,4 +4,4 @@ COPY ./default.conf /etc/nginx/conf.d/default.conf
 
 RUN mkdir -p /etc/letsencrypt/geerydev.com
 
-# TODO: SSL certs
+# SSL certs mounted at runtime
