@@ -1,0 +1,12 @@
+---
+- hosts: geerydev
+  become: yes
+    
+  tasks:
+    - name: Copy db data to server
+      copy:
+        src: ./data/geerydev/latest
+        dest: /home/db
+    - name: Restore db
+      shell: docker exec gd-mongodb bash -c "mongorestore --uri=mongodb://gd-mongodb:27017 /tmp/home/db/geerydev"
+

@@ -29,7 +29,11 @@ override.tf.json
 # example: *tfplan*
 
 # Project specific
-credentials/
 account.json
 servers/aws_mini/aws-mini
+servers/*/key
+servers/*/.env
 deploy.txt
+ansible/data
+ansible/.node.env
+ansible/*.retry

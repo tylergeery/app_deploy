@@ -1,0 +1,21 @@
+---
+- hosts: geerydev
+  become: yes
+    
+  tasks:
+    - name: Ensure app network exists
+      docker_network:
+        name: prod
+        state: present
+    - name: Start new mongodb deployment
+      docker_container:
+        name: gd-mongodb
+        image: mongo
+        detach: yes
+        networks:
+          - name: prod
+        ports:
+          - "27017"
+        volumes:
+          - /home:/tmp/home
+    

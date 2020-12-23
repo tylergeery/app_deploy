@@ -1,0 +1,47 @@
+---
+- hosts: geerydev
+  become: yes
+    
+  tasks:
+    - name: Copy secrets to server
+      copy:
+        src: ./.node.env
+        dest: /home/.node.env
+    - name: Pull latest node image
+      shell: docker pull tylergeery/gd-image-node
+    - name: Pull latest rca image
+      shell: docker pull tylergeery/rust-color-analyzer
+    - name: Ensure app network exists
+      docker_network:
+        name: prod
+        state: present
+    - name: Stop existing geerydev deployment
+      docker_container:
+        name: gd-node
+        state: absent
+    - name: Start new geerydev deployment
+      docker_container:
+        name: gd-node
+        image: tylergeery/gd-image-node
+        detach: yes
+        networks:
+          - name: prod
+        ports:
+          - "8080"
+        restart_policy: unless-stopped
+        env_file: "/home/.node.env"
+    - name: Stop existing rca deployment
+      docker_container:
+        name: rust-color-analyzer
+        state: absent
+    - name: Start new rca deployment
+      docker_container:
+        name: rust-color-analyzer
+        image: tylergeery/rust-color-analyzer
+        detach: yes
+        networks:
+          - name: prod
+        ports:
+          - "8080"
+        restart_policy: unless-stopped
+    

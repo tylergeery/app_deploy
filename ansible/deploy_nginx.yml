@@ -1,0 +1,26 @@
+---
+- hosts: geerydev
+  become: yes
+    
+  tasks:
+    - name: Pull latest docker image
+      shell: docker pull tylergeery/gd-image-nginx
+    - name: Stop existing deployment
+      docker_container:
+        name: gd-nginx
+        state: absent
+    - name: Start new deployment
+      docker_container:
+        name: gd-nginx
+        image: tylergeery/gd-image-nginx
+        detach: yes
+        networks:
+          - name: prod
+        ports:
+          - "80:80"
+          - "443:443"
+        volumes:
+          - /etc/letsencrypt/live/geerydev.com/fullchain.pem:/etc/letsencrypt/geerydev.com/fullchain.pem
+          - /etc/letsencrypt/live/geerydev.com/privkey.pem:/etc/letsencrypt/geerydev.com/privkey.pem
+        restart_policy: always
+    
