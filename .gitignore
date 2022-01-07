@@ -36,4 +36,5 @@ servers/*/.env
 deploy.txt
 ansible/data
 ansible/.node.env
+ansible/*/*.retry
 ansible/*.retry
