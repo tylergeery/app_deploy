@@ -8,5 +8,6 @@
         src: ./data/geerydev/latest
         dest: /home/db
     - name: Restore db
-      shell: docker exec gd-mongodb bash -c "mongorestore --uri=mongodb://gd-mongodb:27017 /tmp/home/db/geerydev"
+      # /tmp/db should have one directory for each database (e.g geerydev/*.(j|b)son) 
+      shell: docker exec gd-mongodb bash -c "mongorestore --uri=mongodb://gd-mongodb:27017 /tmp/db"
 

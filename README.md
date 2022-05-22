@@ -14,3 +14,5 @@ ssh -i aws-mini ubuntu@<public_dns>
 - Sync application code with server (ansible deploy)
 - Add deploy playbooks or CLI to other repos
 - Handle graceful deploys (rolling) `nginx reload -s`
+
+docker run -v /home/db:/tmp/db --restart unless-stopped --network prod -p 27017 --name gd-mongodb -d mongoF

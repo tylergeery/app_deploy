@@ -17,5 +17,5 @@
         ports:
           - "27017"
         volumes:
-          - /home:/tmp/home
+          - /home/db:/tmp/db
     
